@@ -8,8 +8,14 @@
         <shape-square /> 
       </div>
       <div class="shape-triangle-panel">
-        <shape-triangle />
-        <shape-triangle />
+        <shape-triangle direction="right" color="#AAFF00" />
+        <shape-triangle direction="top"  color="red"/>
+        <shape-triangle direction="left"/>
+        <shape-triangle direction="bottom"/>
+        <shape-triangle direction="left-top"/>
+        <shape-triangle direction="left-bottom"/>
+        <shape-triangle direction="right-top"/>
+        <shape-triangle direction="right-bottom"/> 
       </div>
     </template-page>
   </div>
