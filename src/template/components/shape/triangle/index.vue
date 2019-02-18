@@ -1,11 +1,19 @@
 <template>
-  <div class="triangle-template" :style="getStyle()">
-
-  </div>
+  <div class="triangle-template" :style="getStyle()" />
 </template>
  
 
 <script>
+const COLOR_POS_MAP = {
+  left: 1,
+  "left-top": 0,
+  "left-bottom": 2,
+  right: 3,
+  "right-top": 0,
+  "right-bottom": 2,
+  top: 2,
+  bottom: 0
+};
 export default {
   props: {
     color: {
@@ -19,6 +27,10 @@ export default {
     direction: {
       type: [String, Number],
       default: "right" //direction:top-bottom-left-right
+    },
+    compact: {
+      type: [Boolean],
+      default: true
     }
   },
   data() {
@@ -29,13 +41,23 @@ export default {
   mounted() {},
   methods: {
     getStyle() {
-      let border = this.getBorderStyle();
       let style = "";
-      style += `border-width:${border.borderWidth};`;
-      style += `border-color:${border.borderColor};`;
+      style += this.getBorderStyle();
       return style;
     },
 
+    getBorderStyle() {
+      let style = "";
+      style += `border-width:${this.getBorderWidth(
+        this.direction,
+        this.width
+      )};`;
+      style += `border-color:${this.getBorderColor(
+        this.direction,
+        this.color
+      )};`;
+      return style;
+    },
     getBorderColorString(pos, color) {
       const colors = [
         "transparent",
@@ -48,43 +70,21 @@ export default {
     },
 
     getBorderColor(direction, color) {
-      let borderColor = "";
-      switch (direction) {
-        case "top":
-          borderColor = this.getBorderColorString(2, color);
-          break;
-        case "bottom":
-          borderColor = this.getBorderColorString(0, color);
-          break;
-        case "left":
-          borderColor = this.getBorderColorString(1, color);
-          break;
-        case "left-bottom":
-          borderColor = this.getBorderColorString(2, color);
-          break;
-        case "left-top":
-          borderColor = this.getBorderColorString(0, color);
-          break;
-        case "right":
-          borderColor = this.getBorderColorString(3, color);
-          break;
-        case "right-bottom":
-          borderColor = this.getBorderColorString(2, color);
-          break;
-        case "right-top":
-          borderColor = this.getBorderColorString(0, color);
-          break;
-        default:
-          break;
-      }
-      return borderColor;
+      const pos = COLOR_POS_MAP[direction];
+      const colors = [
+        "transparent",
+        "transparent",
+        "transparent",
+        "transparent"
+      ];
+      colors[pos] = color;
+      return colors.join(" ");
     },
     getBorderWidth(direction, width) {
       let widthValue = parseInt(this.width.replace("px", ""));
       let hypotenuseWidth = widthValue * 1.4142 + "px";
-      let offsetWidth = widthValue * (2 - 1.4142) + "px";
-      let widths = [this.width, this.width, this.width, this.width]; 
-      console.log(widthValue, hypotenuseWidth, offsetWidth, widths);
+      let offsetWidth = this.compact ? "0px" : widthValue * (2 - 1.4142) + "px";
+      let widths = [this.width, this.width, this.width, this.width];
 
       switch (direction) {
         case "top":
@@ -96,7 +96,7 @@ export default {
         case "left":
           widths[3] = "0px";
           break;
-        case "left-bottom":        
+        case "left-bottom":
           widths[0] = `${offsetWidth}`;
           widths[1] = `${hypotenuseWidth}`;
           widths[2] = `${hypotenuseWidth}`;
@@ -127,13 +127,6 @@ export default {
           break;
       }
       return widths.join(" ");
-    },
-
-    getBorderStyle() {
-      let style = {};
-      style.borderColor = this.getBorderColor(this.direction, this.color);
-      style.borderWidth = this.getBorderWidth(this.direction, this.width);
-      return style;
     }
   }
 };
