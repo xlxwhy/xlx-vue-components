@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path')
 const ip = require('ip')
 const glob = require('glob'); 
-const VUE_PUBLIC_PATH = "/mobile"
+const VUE_PUBLIC_PATH = "/xlx-vue-components"
 
 const allEntries = getAllEntries(path.resolve(__dirname, '../src/**/main.js'))
 const entries = getEntries(allEntries, process.env.entry)

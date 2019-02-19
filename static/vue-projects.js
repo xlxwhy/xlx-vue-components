@@ -1,1 +1,1 @@
-export default{template:"../template/index.html",}
+export default{package:"../package/index.html",}

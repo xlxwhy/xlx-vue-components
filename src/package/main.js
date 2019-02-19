@@ -11,7 +11,7 @@ import VuePrototype from "#/utils/vue/VuePrototype.js"
 Vue.prototype.$back = VuePrototype.back;
 // 处理标题信息
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'Template'
+  document.title = to.meta.title || '-'
   next()
 });
 

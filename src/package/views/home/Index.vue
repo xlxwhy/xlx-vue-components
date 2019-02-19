@@ -17,11 +17,20 @@
         <shape-triangle direction="right-top"/>
         <shape-triangle direction="right-bottom"/> 
       </div>
+      <div class="shape-sector-panel">
+        sdfsdf
+        <shape-sector>123
+          <shape-sector-item /> sdfsdf
+        </shape-sector>
+       
+      </div>
     </template-page>
   </div>
 </template>
  
  <script>
+import ShapeSector from "../../components/shape/sector/sector.vue";
+import ShapeSectorItem from "../../components/shape/sector/sector-item.vue";
 import ShapeSquare from "../../components/shape/square/index.vue";
 import ShapeTriangle from "../../components/shape/triangle/index.vue";
 import HomeBlock from "../../components/home/HomeBlock.vue";
@@ -39,8 +48,8 @@ export default {
   components: {
     ShapeSquare,
     ShapeTriangle,
-    ColorItem,
-    TemplateNavBar,
+    ShapeSector,
+    ShapeSectorItem,
     TemplateTabbar,
     TemplatePage
   },
