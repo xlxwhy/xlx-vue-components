@@ -36,7 +36,8 @@ export default {
     }
   },
   data() {
-    return {
+    return { 
+      parent:{},
       items: [],
       itemIndex: 0,
       itemSize: 1,
@@ -47,7 +48,8 @@ export default {
 
   components: {},
   mounted() {
-    this.items = this._findChildren("turnplate-item", this.$parent);
+    this.parent = this._findParent("turnplate");
+    this.items = this._findChildren("turnplate-item", this.parent);
     this.itemSize = this.getItemSize();
     this.itemIndex = this.getItemIndex();
     this.itenStyle = this.getItemStyle();
@@ -62,7 +64,7 @@ export default {
       return this.items.length;
     },
     getContentStyle() {
-      let width = this.$parent.width.replace("px", "");
+      let width = this.parent.width.replace("px", "");
       let angle = 360 / this.itemSize;
       let style = "";
       if (this.itemSize == 2) {
@@ -80,7 +82,7 @@ export default {
       return style;
     },
     getItemStyle() {
-      let width = this.$parent.width.replace("px", "");
+      let width = this.parent.width.replace("px", "");
       let i = this.itemIndex;
       let len = this.itemSize;
       let style = "";

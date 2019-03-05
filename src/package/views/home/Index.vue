@@ -17,61 +17,17 @@
         <shape-triangle direction="right-top" />
         <shape-triangle direction="right-bottom" />
       </div>
-      <div class="turnplate-panel">
-        <turnplate :class="`${startClass} ${stopClass}`" width="350px">
-          <div slot="button">
-            <button-gelatine @click.native="start">A</button-gelatine>
-          </div>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>10</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>20</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>30</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>40</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>50</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>60</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>70</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-          <turnplate-item>
-            <div style="text-align:center">
-              <span>为民积分</span><br>
-              <span>80</span><br><br><br><br><br><br>
-            </div>
-          </turnplate-item>
-        </turnplate>
-
+      <div class="lottery-panel">
+        <lottery>
+          <lottery-item>  001  <br><br><br><br><br></lottery-item>
+          <lottery-item>  002  <br><br><br><br><br></lottery-item>
+          <lottery-item>  003  <br><br><br><br><br></lottery-item>
+          <lottery-item>  004  <br><br><br><br><br></lottery-item>
+          <lottery-item>  005  <br><br><br><br><br></lottery-item>
+          <lottery-item>  006  <br><br><br><br><br></lottery-item>
+          <lottery-item>  007  <br><br><br><br><br></lottery-item>
+          <lottery-item>  008  <br><br><br><br><br></lottery-item>
+        </lottery>
         <br><br><br><br>
         <div v-if="point">
           本次抽到+{{this.point}}积分
@@ -92,6 +48,8 @@
  
  <script>
 import ButtonGelatine from "../../components/button/gelatine/index.vue";
+import Lottery from "../../components/lottery/lottery.vue";
+import LotteryItem from "../../components/lottery/lottery-item.vue";
 import Turnplate from "../../components/shape/turnplate/turnplate.vue";
 import TurnplateItem from "../../components/shape/turnplate/turnplate-item.vue";
 import ShapeSquare from "../../components/shape/square/index.vue";
@@ -115,6 +73,8 @@ export default {
   },
   mounted() {},
   components: {
+    Lottery,
+    LotteryItem,
     ShapeSquare,
     ShapeTriangle,
     Turnplate,
@@ -179,33 +139,7 @@ export default {
     display: flex;
   }
 
-  .turnplate-panel {
-    .start {
-      .template__body {
-        animation: rotationx 2s linear infinite;
-      }
-    }
-
-    @include rotation-stop(1);
-    @include rotation-stop(2);
-    @include rotation-stop(3);
-    @include rotation-stop(4);
-    @include rotation-stop(5);
-    @include rotation-stop(6);
-    @include rotation-stop(7);
-    @include rotation-stop(8);
-  }
-}
-
-$color-hover: #999;
-
-@keyframes rotationx {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(2520deg);
-  }
+ 
 }
  
 </style>
