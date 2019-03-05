@@ -2,6 +2,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './routers'
+import mixins from './mixins/index.js'
+Vue.mixin(mixins);
 
 import './icons/index.js'  // icon
 import Cookie from 'js-cookie'

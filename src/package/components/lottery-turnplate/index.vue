@@ -1,11 +1,13 @@
 <template>
-  <div class="sector-template" :style="getStyle()">
+  <div class="lottery-turnplate-template" :style="getStyle()">
     <slot />
   </div>
 </template>
  
 
- <script>
+<script>
+import Turnplate from "../components/shape/turnplate/turnplate.vue";
+import TurnplateItem from "../components/shape/turnplate/turnplate-item.vue";
 export default {
   props: {
     width: {
@@ -15,11 +17,13 @@ export default {
   },
   data() {
     return {
-      children: []
     };
   },
 
-  components: {},
+  components: {
+    Turnplate,
+    TurnplateItem
+  },
   mounted() {},
   methods: {
     getStyle() {
@@ -33,10 +37,10 @@ export default {
 </script>
 
 <style lang="scss">
-.sector-template {
+.turnplate-template {
   position: relative;
   margin: 1em auto;
-  padding: 0; 
+  padding: 0;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
