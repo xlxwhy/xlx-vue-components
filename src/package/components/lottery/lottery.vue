@@ -1,11 +1,13 @@
 <template>
   <div class="lottery-template">
-    <turnplate :class="`${startClass} ${stopClass}`" width="350px">
-      <div slot="button">
-        <button-gelatine @click.native="start">A</button-gelatine>
-      </div>
-      <slot />
-    </turnplate>
+    <div>
+      <turnplate :class="`${startClass} ${stopClass}`" width="350px">
+        <div slot="button">
+          <button-gelatine @click.native="start">^</button-gelatine>
+        </div>
+        <slot />
+      </turnplate>
+    </div>
   </div>
 </template>
  
@@ -41,8 +43,11 @@ export default {
         this.stop();
         setTimeout(() => {
           this.point = this.index * 10;
+          this.$emit("on-stop", this.point);
         }, 3000);
       }, 3000);
+
+      this.$emit("on-start");
     },
     stop() {
       this.startClass = "";
@@ -97,6 +102,20 @@ export default {
   @include rotation-stop(6, 8);
   @include rotation-stop(7, 8);
   @include rotation-stop(8, 8);
+
+  > div {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: #f59701;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px #d77802;
+  }
+  .button-gelatine-template > a.btn {
+    // padding: 0px 15px 30px 15px;
+  }
 }
 </style>
 

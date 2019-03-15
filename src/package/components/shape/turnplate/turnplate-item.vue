@@ -18,26 +18,13 @@ export default {
     colors: {
       type: [Array],
       default: () => {
-        return [
-          "#A6C2CE",
-          "#9C8F96",
-          "#EBC57C",
-          "#6B799E",
-          "#E1DCD9",
-          "#8F8681",
-          "#A67F78",
-          "#32435F",
-          "#BED3D4",
-          "#E8CAA4",
-          "#A1B872",
-          "#E5D67B"
-        ];
+        return ["#f9d725", "#f7ad20"];
       }
     }
   },
   data() {
-    return { 
-      parent:{},
+    return {
+      parent: {},
       items: [],
       itemIndex: 0,
       itemSize: 1,

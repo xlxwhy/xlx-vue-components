@@ -18,15 +18,15 @@
         <shape-triangle direction="right-bottom" />
       </div>
       <div class="lottery-panel">
-        <lottery>
-          <lottery-item>  001  <br><br><br><br><br></lottery-item>
-          <lottery-item>  002  <br><br><br><br><br></lottery-item>
-          <lottery-item>  003  <br><br><br><br><br></lottery-item>
-          <lottery-item>  004  <br><br><br><br><br></lottery-item>
-          <lottery-item>  005  <br><br><br><br><br></lottery-item>
-          <lottery-item>  006  <br><br><br><br><br></lottery-item>
-          <lottery-item>  007  <br><br><br><br><br></lottery-item>
-          <lottery-item>  008  <br><br><br><br><br></lottery-item>
+        <lottery @on-start="start" @on-stop="stop">
+          <lottery-item> 001 <br><br><br><br><br></lottery-item>
+          <lottery-item> 002 <br><br><br><br><br></lottery-item>
+          <lottery-item> 003 <br><br><br><br><br></lottery-item>
+          <lottery-item> 004 <br><br><br><br><br></lottery-item>
+          <lottery-item> 005 <br><br><br><br><br></lottery-item>
+          <lottery-item> 006 <br><br><br><br><br></lottery-item>
+          <lottery-item> 007 <br><br><br><br><br></lottery-item>
+          <lottery-item> 008 <br><br><br><br><br></lottery-item>
         </lottery>
         <br><br><br><br>
         <div v-if="point">
@@ -83,28 +83,11 @@ export default {
     TemplatePage
   },
   methods: {
+    stop(point) {
+      this.point = point;
+    },
     start() {
-      if (this.startClass.indexOf("start") >= 0) {
-        return 1;
-      }
       this.point = 0;
-      this.stopClass = "";
-      this.startClass = "start";
-      this.turnplateStyle = "-webkit-transform: rotate(360deg/8);";
-      setTimeout(() => {
-        this.index = this.getRandomIndex();
-        this.stop();
-        setTimeout(() => {
-          this.point = this.index * 10;
-        }, 3000);
-      }, 3000);
-    },
-    stop() {
-      this.startClass = "";
-      this.stopClass = "stop" + this.index;
-    },
-    getRandomIndex() {
-      return parseInt(Math.random() * 8 + 1);
     }
   }
 };
@@ -112,24 +95,7 @@ export default {
 
 <style lang="scss">
 @import "../../styles/variables.scss";
-
-@mixin rotation-stop($index) {
-  .stop#{$index} {
-    .template__body {
-      animation: rotation#{$index} 3s ease-out;
-      transform: rotate(($index - 1) * 360deg/8);
-    }
-  }
-
-  @keyframes rotation#{$index} {
-    from {
-      -webkit-transform: rotate(($index - 1) * 360deg/8);
-    }
-    to {
-      -webkit-transform: rotate(2520deg+ ($index - 1) * 360deg/8);
-    }
-  }
-}
+ 
 
 .home-container {
   .shape-square-panel {
@@ -138,10 +104,7 @@ export default {
   .shape-triangle-panel {
     display: flex;
   }
-
- 
 }
- 
 </style>
 
 

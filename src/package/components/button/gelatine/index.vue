@@ -35,11 +35,19 @@ export default {
 }
 
 // DCC1B0 869DAB 847072 3D313F
-$color-bg: #DCC1B0 !default;
-$color-btn: #847072 !default;
-$color-btn-secondary: #847072;
-$color-btn-active: #3D313F !default;
-$color-btn-active-border: #847072 !default;
+// $color-bg: #DCC1B0 !default;
+// $color-btn: #847072 !default;
+// $color-btn-secondary: #847072;
+// $color-btn-active: #3D313F !default;
+// $color-btn-active-border: #847072 !default;
+
+$color-bg: #f3af21 !default;
+$color-btn: #f28d1d !default;
+$color-btn-secondary: #f28d1d;
+$color-btn-active: #a20607 !default;
+$color-btn-active-border: #f28d1d !default;
+
+
 
 /**
  * $Mixin 
